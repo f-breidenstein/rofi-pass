@@ -62,10 +62,7 @@ has_qrencode() {
 list_passwords() {
   cd "${root}" || exit
   pw_list=(**/*.gpg)
-  printf '%s\n' "${pw_list[@]}" | sort -n | \
-    while read -r filename; do
-      printf '%s\n' "${filename%.gpg}"
-  done
+  printf '%s\n' "${pw_list[@]%.gpg}" | sort -n
 }
 
 doClip () {
